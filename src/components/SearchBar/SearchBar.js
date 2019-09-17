@@ -1,8 +1,6 @@
 import React from 'react'
 import './SearchBar.css'
 
-
-
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
@@ -16,49 +14,46 @@ class SearchBar extends React.Component {
             "Highest Rated" : 'rating',
             "Most Reviewed" : 'review_count'
         }
-        this.handleTermChange = this.handleTermChange.bind(this)
-        this.handleLocationChange = this.handleLocationChange.bind(this)
-        this.handleSearch = this.handleSearch.bind(this)
     }
 
-    getSortByClass (sortByOption) {
+    getSortByClass = (sortByOption) => {
         return (this.state.sortBy === sortByOption 
         ? 'active'
         : ''
         )
     }
 
-    handleSortByChange(sortByOption) {
+    handleSortByChange = (sortByOption) => {
         this.setState({
             sortBy: sortByOption
         })
 
     }
 
-    handleTermChange (event) {
+    handleTermChange = (event) => {
         this.setState({
             term: event.target.value
         })
     }
 
-    handleLocationChange (event) {
+    handleLocationChange = (event) => {
         this.setState({
             location: event.target.value
         })
     }
 
-    handleSearch (event) {
+    handleSearch = (event) => {
         this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy)
         event.preventDefault()
     }
 
-    renderSortByOptions() {
+    renderSortByOptions = () => {
         return Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];
             return  <li 
                         key={sortByOptionValue}
                         className={this.getSortByClass(sortByOptionValue)}
-                        onClick={this.handleSortByChange.bind(this, sortByOptionValue)}
+                        onClick={this.handleSortByChange}
                     >
                             {sortByOption}
                     </li>
