@@ -1,8 +1,7 @@
 import React from 'react'
 import './Business.css'
 
-const Business = (props) => {
-        const { business } = props
+const Business = ({business}) => {
         return (
             <div className="Business">
                 <div className="image-container">
